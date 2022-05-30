@@ -19,10 +19,10 @@ function Navbar() {
       <nav className="navbar">
         <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
           <i className="fab fa-firstdraft" />
-          CasaStore
+          Librairie Ibn Sina
         </Link>
 
-        <div class Name="menu-icon" onClick={handleClick}>
+        <div className="menu-icon" onClick={handleClick}>
           <i className={click ? "fas fa-times" : "fas fa-bars"} />
         </div>
         <div className="nav-search">{/* <Search /> */}</div>
@@ -56,19 +56,19 @@ function Navbar() {
             </Link>
           </li>
 
-          <li className="nav-item">
+          <li className="nav-item panier">
             <Link to="/cart" className="nav-links" onClick={closeMobileMenu}>
-              {cartItems.length === 0
-                ? (
-
-                  
-              <i className="fas fa-shopping-cart"></i>
-                
-                ) 
-                : `DT ${cartItems.reduce(
-                    (acc, item) => acc + item.quantity * item.price,
-                    0
-                  )}`}
+              {cartItems.length === 0 ? (
+                <span>
+                  Panier
+                  <i className="fas fa-shopping-cart"></i>
+                </span>
+              ) : (
+                ` ${cartItems.reduce(
+                  (acc, item) => acc + item.quantity * item.price,
+                  0
+                )} DT `
+              )}
             </Link>
           </li>
           {/* <li>
@@ -82,11 +82,11 @@ function Navbar() {
           </li> */}
           {isAuthenticated ? (
             <li className="nav-item" onClick={closeMobileMenu}>
-              <Button value={user.name} link={"account"} />
+              <Button value={`${user.name}`} link={"/account"} />
             </li>
           ) : (
             <li className="nav-item" onClick={closeMobileMenu}>
-              <Button value={"Se connecter"} link={"login"} />
+              <Button value={"Se connecter"} link={"/login"} />
             </li>
           )}
         </ul>

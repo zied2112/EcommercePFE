@@ -29,6 +29,9 @@ const ProductDetails = ({ match }) => {
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
+    const { success, error: reviewError } = useSelector(
+      (state) => state.newReview
+    );
 
   const options = {
     size: "large",
@@ -79,9 +82,18 @@ const ProductDetails = ({ match }) => {
       alert.error(error);
       dispatch(clearErrors());
     }
+    if (reviewError) {
+      alert.error(reviewError);
+      dispatch(clearErrors());
+    }
+
+    if (success) {
+      alert.success("Review Submitted Successfully");
+      dispatch({ type: NEW_REVIEW_RESET });
+    }
 
     dispatch(getProductDetails(match.params.id));
-  }, [dispatch, match.params.id, error, alert]);
+  }, [dispatch, match.params.id, error, alert, reviewError, success]);
 
   return (
     <Fragment>
@@ -151,7 +163,7 @@ const ProductDetails = ({ match }) => {
                 Description : <p>{product.description}</p>
               </div>
 
-              <button className="submitReview">Poster le commentaire</button>
+              <button onClick={submitReviewToggle} className="submitReview">Poster le commentaire</button>
             </div>
           </div>
           <h3 className="reviewsHeading">commentaire</h3>

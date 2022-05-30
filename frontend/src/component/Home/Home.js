@@ -34,7 +34,6 @@ const Home = () => {
     dispatch(getProduct());
   }, [dispatch, error, alert]);
 
-        console.log(products);
   
   return (
     <Fragment>

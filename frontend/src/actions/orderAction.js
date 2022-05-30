@@ -33,8 +33,14 @@ export const createOrder = (order) => async (dispatch) => {
       },
     };
     const { data } = await axios.post("/api/v1/order/new", order, config);
-
     dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
+    localStorage.clear()
+    // localStorage.setItem(
+    //   "cartItems",
+    //   JSON.stringify("") 
+    // );
+  // localStorage.setItem("shippingInfo", JSON.stringify(""));
+
   } catch (error) {
     dispatch({
       type: CREATE_ORDER_FAIL,

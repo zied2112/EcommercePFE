@@ -14,12 +14,12 @@ const Footer = () => {
       </div>
 
       <div className="midFooter">
-        <h1>CasaStore.</h1>
+        <h1>
+          <i className="fab fa-firstdraft" /> Librairie Ibn Sina
+        </h1>
         <p>High Quality is our first priority</p>
 
-        <p>
-          Copyrights 2021 Satisfy &copy;
-        </p>
+        <p>Copyrights 2021 Satisfy &copy;</p>
       </div>
 
       <div className="rightFooter">

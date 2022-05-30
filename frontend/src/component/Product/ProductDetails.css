@@ -164,11 +164,13 @@
   padding: 1vmax;
   width: 20vmax;
   margin: auto;
-  margin-bottom: 4vmax;
+  margin-bottom: 2vmax;
 }
 .reviews {
   display: flex;
   overflow: auto;
+  margin-bottom: 4vmax;
+
 }
 
 .reviewCard {
@@ -196,6 +198,7 @@
 }
 
 .noReviews {
+  margin-bottom: 4vmax;
   font: 400 1.3vmax "Gill Sans";
   text-align: center;
   color: rgba(0, 0, 0, 0.548);

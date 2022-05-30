@@ -1,0 +1,55 @@
+.CategoriesContainer {
+    /* justify-content: center; */
+    align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgb(255, 255, 255);
+  border-left: 1px solid rgba(0, 0, 0, 0.158);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#CategoriesHeading {
+  font: 400 2rem "Roboto";
+  padding: 0.5vmax;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.637);
+  transition: all 0.5s;
+  margin: 2rem;
+  text-align: center;
+}
+
+.modal-header{
+    padding: 5px 15px;
+    background-color: #333;
+}
+.modal-title{
+    font-size: 18px;
+    color: #fff;
+}
+.modal-footer{
+    padding: 5px 15px;
+}
+
+.actionBtnContainer{
+    display: flex;
+    align-items: center;
+}
+
+.actionBtnContainer > button{
+    border: 0;
+    margin: 0 5px;
+    font-size: 14px;
+}
+
+.CategoriesContainer> select {
+    width: 50%;
+    padding: 1vmax 4vmax;
+  padding-right: 1vmax;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.267);
+  border-radius: 4px;
+  font: 300 0.9vmax cursive;
+  outline: none;
+} 
