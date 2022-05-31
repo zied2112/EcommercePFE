@@ -164,6 +164,7 @@ function App() {
       <MessengerCustomerChat
         pageId="628805897280956"
         appId="1082561295803150"
+        theme_color="#f0ca20"
       />
     </Router>
   );

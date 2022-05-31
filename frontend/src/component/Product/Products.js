@@ -9,22 +9,26 @@ import Slider from "@material-ui/core/Slider";
 import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
 import MetaData from "../layout/MetaData";
+import { getAllCategory } from "../../actions/categoryAction";
 
-const categories = [
-  "Laptop",
-  "Footwear",
-  "Bottom",
-  "Tops",
-  "Attire",
-  "Camera",
-  "machine",
-  "SmartPhones",
-];
+
+
+const createCategoryList = (categories, options = []) => {
+  for (let category of categories) {
+    options.push({ value: category._id, name: category.name });
+    if (category.children.length > 0) {
+      createCategoryList(category.children, options);
+    }
+  }
+
+  return options;
+};
 
 const Products = ({ match }) => {
   const dispatch = useDispatch();
 
   const alert = useAlert();
+    const categorie = useSelector((state) => state.category);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 100000]);
@@ -57,9 +61,13 @@ const Products = ({ match }) => {
       alert.error(error);
       dispatch(clearErrors());
     }
+    dispatch(getAllCategory());
 
     dispatch(getProduct(keyword, currentPage, price, category, ratings));
   }, [dispatch, keyword, currentPage, price, category, ratings, alert, error]);
+
+  const categories = createCategoryList(categorie.categories);
+  console.log(categories)
 
   return (
     <Fragment>
