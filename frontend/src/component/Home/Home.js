@@ -44,11 +44,11 @@ const Home = () => {
           <MetaData title="ECOMMERCE" />
           <div className="banner">
             {/* <p>Nouveau Produit</p> */}
-            <h1>FIND AMAZING PRODUCTS BELOW</h1>
+            <h1>TROUVEZ DES LIVRES INCROYABLES CI-DESSOUS</h1>
 
             <a href="#container">
               <button>
-                Scroll <CgMouse />
+                Défiler <CgMouse />
               </button>
             </a>
           </div>
