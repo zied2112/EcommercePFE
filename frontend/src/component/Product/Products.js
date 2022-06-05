@@ -9,7 +9,17 @@ import Slider from "@material-ui/core/Slider";
 import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
 import MetaData from "../layout/MetaData";
-import { getAllCategory } from "../../actions/categoryAction";
+
+const categories = [
+  "Laptop",
+  "Footwear",
+  "Bottom",
+  "Tops",
+  "Attire",
+  "Camera",
+  "machine",
+  "SmartPhones",
+];
 
 const Products = ({ match }) => {
   const dispatch = useDispatch();
@@ -21,7 +31,7 @@ const Products = ({ match }) => {
   const [category, setCategory] = useState("");
 
   const [ratings, setRatings] = useState(0);
-  const categories = useSelector((state) => state.category);
+
   const {
     products,
     loading,
@@ -32,7 +42,7 @@ const Products = ({ match }) => {
   } = useSelector((state) => state.products);
 
   const keyword = match.params.keyword;
-
+ 
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
   };
@@ -43,25 +53,14 @@ const Products = ({ match }) => {
   let count = filteredProductsCount;
 
   useEffect(() => {
-    dispatch(getAllCategory());
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
+
     dispatch(getProduct(keyword, currentPage, price, category, ratings));
   }, [dispatch, keyword, currentPage, price, category, ratings, alert, error]);
-  const createCategoryList = (categories, options = []) => {
-    for (let category of categories) {
-      options.push({ value: category._id, name: category.name });
-      if (category.children.length > 0) {
-        createCategoryList(category.children, options);
-      }
-    }
 
-    return options;
-  };
-  const categorieee = createCategoryList(categories.categories);
-  console.log(categorieee);
   return (
     <Fragment>
       {loading ? (
@@ -91,20 +90,19 @@ const Products = ({ match }) => {
 
             <Typography>Catégories</Typography>
             <ul className="categoryBox">
-              {createCategoryList(categories.categories).map((opt) => (
+              {categories.map((category) => (
                 <li
-                  className="cateogory-link"
-                  key={opt.name}
-                  onClick={() => setCategory(opt.value)}
+                  className="category-link"
+                  key={category}
+                  onClick={() => setCategory(category)}
                 >
-                  {opt.name}
-                  {console.log(category)}
+                  {category}
                 </li>
               ))}
             </ul>
 
             <fieldset>
-              <Typography component="legend">Note Supérieur</Typography>
+              <Typography component="legend">Note</Typography>
               <Slider
                 value={ratings}
                 onChange={(e, newRating) => {
