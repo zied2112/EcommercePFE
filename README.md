@@ -4,7 +4,7 @@
 ![image](https://user-images.githubusercontent.com/11340240/189173785-ab42de18-1c5c-4034-a2fe-b9e6e482d478.png)
 
 
-> Description the project.
+> Ecommerce Web Application
 
 
 ## Built With
